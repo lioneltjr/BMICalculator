@@ -14,8 +14,10 @@ class HistoryPage extends StatelessWidget {
           if(!snapshot.hasData)
             return Text('Loading...');
           return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(snapshot.data.documents[0]['BMI']),
+              Center(child: Text(snapshot.data.documents[0]['bmi'].toString(),style: TextStyle(fontSize: 100.0),),
+              ),
             ],
           );
         },

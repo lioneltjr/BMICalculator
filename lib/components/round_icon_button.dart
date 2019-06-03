@@ -9,7 +9,7 @@ class RoundIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(icon),
-      onPressed: () {},
+      onPressed: onPressed,
       shape: CircleBorder(),
       fillColor: Color(0xFF4C4F5E),
       elevation: 2.0,
