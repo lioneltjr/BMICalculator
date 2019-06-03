@@ -5,6 +5,14 @@ import 'reusable_card.dart';
 
 const bottomContainerHeight = 80.0;
 const defaultCardColor = 0xFF1D1E33;
+const Color activeColor = Color(0xFF1D1E33);
+const inactiveColor = Color(0xFF111328);
+
+
+enum Gender{
+  male,
+  female
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -12,6 +20,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,15 +35,29 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(
-                    colour: Color(defaultCardColor),
-                    cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
+                  child: GestureDetector(
+                    onTap: (){
+                      setState((){
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: selectedGender == Gender.male ? activeColor : inactiveColor,
+                      cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: Color(defaultCardColor),
-                    cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                  child: GestureDetector(
+                    onTap:(){
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+    },
+                    child: ReusableCard(
+                      colour: selectedGender == Gender.female ? activeColor : inactiveColor,
+                      cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                    ),
                   ),
                 ),
               ],
